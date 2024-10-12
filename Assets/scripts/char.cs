@@ -27,9 +27,9 @@ public Sprite toChange;
     public void Update()
         {
             if (pressed)
-                rect.anchoredPosition += new Vector2 (-0.2f, 0);
+                rect.anchoredPosition += new Vector2 (-2f, 0);
             else if (rect.anchoredPosition.x <= 0)
-                rect.anchoredPosition += new Vector2 (0.5f,0);
+                rect.anchoredPosition += new Vector2 (5f,0);
         }
     IEnumerator Shake() {
         Debug.Log("ㅇㅇ");
