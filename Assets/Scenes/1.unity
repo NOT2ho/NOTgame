@@ -1769,8 +1769,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 382a30ba95a91cc419193afce66379e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound0: {fileID: 0}
-  sound1: {fileID: 0}
+  sound0: {fileID: 1683529880}
+  sound1: {fileID: 802991103}
   hand: {fileID: 15840882}
   toChange1: {fileID: 21300000, guid: b386980506e5e9d4e8dc43cfb0bda270, type: 3}
   spriteObj: {fileID: 743785003}
