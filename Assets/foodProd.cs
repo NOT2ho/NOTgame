@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -9,7 +10,9 @@ using UnityEngine.UI;
 public class FoodProd : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     System.Random rand = new System.Random();
-
+    public AudioSource coin;
+    private Sprite randFood ;
+    
     private Image img;
     private Image charImg;
 
@@ -45,7 +48,18 @@ public class FoodProd : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     public Sprite char0;
     public Sprite char1;
     public Sprite char2;
+    public Sprite char3;
+    public Sprite char4;
+    public Sprite char5;
+    public Sprite char6;
+    
+    bool pressed = false;
+    public GameObject spriteObj;
+    private RectTransform rect;
     void Start() {
+        pressed = false;
+        rect = char_.GetComponent<RectTransform>();
+
         img = foodObj.GetComponent<Image>();
         charImg = char_.GetComponent<Image>();
         charImg.sprite = char0;
@@ -56,23 +70,33 @@ public class FoodProd : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     }
     void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
     {
-        img.sprite = foods[rand.Next(foods.Length)];
-        Debug.Log("drag on");
+        foodObj.SetActive(true);
+        randFood = foods[rand.Next(foods.Length)];
+        img.sprite = randFood;
+        
     }
 
     void IDragHandler.OnDrag(PointerEventData eventData)
     {
         Vector2 currentPos = eventData.position; 
         foodObj.transform.position = currentPos;
-        charImg.sprite = char1;
-   
+        charImg.sprite = char6;
+
     }
 
     void IEndDragHandler.OnEndDrag(PointerEventData eventData)
     {
-        img.sprite = nothing;
-        charImg.sprite = char2;
-
-        Debug.Log("drag off");
+        //img.sprite = nothing;
+        foodObj.SetActive(false);
+        if (randFood == food1 || randFood == food2) 
+            charImg.sprite = char2;
+        else if (randFood == food5 || randFood == food6 || randFood == food7 || randFood == food10) 
+            charImg.sprite = char3;
+        else if (randFood == food0 || randFood == food3 || randFood == food8) 
+            charImg.sprite = char4;
+        else  
+            charImg.sprite = char5;
+        char_.transform.localScale += new Vector3(0.05f, 0.05f, 0.05f);
+        coin.Play();
     }
 }

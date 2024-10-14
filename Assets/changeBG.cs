@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ChangeBG : MonoBehaviour
 {
+    public AudioSource di;
+
     public GameObject spriteObj;
     private Image img;
     public Sprite toChange;
@@ -17,6 +19,7 @@ public class ChangeBG : MonoBehaviour
 
     public void OnClick () {
         img.sprite = toChange;
+        di.Play();
     }
 
 }

@@ -5,6 +5,7 @@ using TMPro;
 using System.IO;
 public class Random : MonoBehaviour
 {   
+    public AudioSource robot;
     public GameObject text;
     private TMP_Text tmpText;
     private string[] h;
@@ -18,6 +19,7 @@ public class Random : MonoBehaviour
     private string gbhm = "";
     System.Random rand = new System.Random();
     void Awake() {
+        
         TextAsset heongA = Resources.Load <TextAsset>("heong");
         TextAsset buA = Resources.Load <TextAsset>("bu");
         TextAsset gamA = Resources.Load <TextAsset>("gam");
@@ -48,5 +50,6 @@ public class Random : MonoBehaviour
     {        
         gbhm = g[rand.Next(g.Length)] + " " + b[rand.Next(b.Length)] + " " + h[rand.Next(h.Length)]+ " " +  m[rand.Next(m.Length)] + "입니다.";
         tmpText.text = gbhm;
+        robot.Play();
     }
 }
